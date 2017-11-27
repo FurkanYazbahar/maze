@@ -57,7 +57,7 @@ void display () {
 
     while (top1 != NULL)
     {
-        printf ("%d ", top1->info);
+        printf ("%d->", top1->info);
         top1 = top1->ptr;
     }
  }
@@ -71,7 +71,6 @@ void display () {
     if (top1 == NULL)
     {
         printf ("Stack is empty");
-        printf ("%s\n", "Searchin içerisindeki garip yer!");
         return;
     }
 
@@ -125,9 +124,9 @@ int walk_in_maze (int* matrix, int edge, int out, int row, int column){
 
 // kare bir matrisi verilen araliklardaki sayilarla doldurur
 void fill_rand_to_matrix (int* strt, int limit) {
-	int i;
-	for (i = 0; i < limit ;i++)
-		*(strt++) = (rand() % 2);
+    int i;
+    for (i = 0; i < limit ;i++)
+        *(strt++) = (rand() % 2);
 }
 
 // İstenilen boyuta göre bellekten yer ayırır 1 ve 0 ile doldurup çağıran fonksiyona adres return eder.
@@ -151,10 +150,10 @@ void put_matrix (int* matrix, int edge){
 // Mevcut yolu matrise  yazar
 void write_current_route (int* matrix, int edge) {
     int i, j, value;
-    for (i = 0; i < edge; i++) {	
+    for (i = 0; i < edge; i++) {    
         for (j = 0; j < edge; j++) {
             value = i * edge + j;
-             *(matrix + value) = search(value)?1:0;
+            *(matrix + value) = search(value)?1:0;
         }
     }
 }
@@ -173,19 +172,20 @@ void find_way (int* matrix,int* matrix1, int edge) {
     out_value = index_position (m, n, edge);
     flag = walk_in_maze (matrix, edge, out_value, row, column);
 
-    if (flag){
+    if (flag) {
         printf ("\nYol bulunmustur\n");
-	write_current_route(matrix1,edge);
-        put_matrix(matrix1,edge);
-        printf("\nGuzergah : \n");
-        display();    
+        write_current_route (matrix1, edge);
+        put_matrix (matrix1, edge);
+        printf ("\nGuzergah : \n");
+        display ();
+        printf ("\n");
     }
     else
         printf ("\nYol bulunamamistir.\n");
 }
 int main () {
-	  int edge;
-	  int *matrix, *matrix1;
+    int edge;
+    int *matrix, *matrix1;
     create ();
     srand (time(NULL));
     printf ("Matris kenarini giriniz: ");
@@ -195,7 +195,7 @@ int main () {
     matrix  = create_Matrix (edge);
     matrix1 = create_Matrix (edge);
     
-    find_way (matrix,matrix1, edge);
+    find_way (matrix, matrix1, edge);
     
     free (matrix);
     free (matrix1);

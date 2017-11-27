@@ -159,7 +159,7 @@ void write_current_route (int* matrix, int edge) {
     }
 }
 
-void find_way (int* matrix, int edge) {
+void find_way (int* matrix,int* matrix1, int edge) {
     int row, column, m, n, flag, out_value;
     int limit = edge*edge;
     fill_rand_to_matrix (matrix, limit);
@@ -173,8 +173,13 @@ void find_way (int* matrix, int edge) {
     out_value = index_position (m, n, edge);
     flag = walk_in_maze (matrix, edge, out_value, row, column);
 
-    if (flag)
+    if (flag){
         printf ("\nYol bulunmustur\n");
+	write_current_route(matrix1,edge);
+        put_matrix(matrix1,edge);
+        printf("\nGuzergah : \n");
+        display();    
+    }
     else
         printf ("\nYol bulunamamistir.\n");
 }
@@ -191,11 +196,7 @@ int main () {
     matrix1 = create_Matrix (edge);
     
     find_way (matrix, edge);
-    write_current_route (matrix1, edge);
-    put_matrix (matrix1, edge);
-    printf ("\nGuzergah : \n");
-    display ();
-
+    
     free (matrix);
     free (matrix1);
     return 0;

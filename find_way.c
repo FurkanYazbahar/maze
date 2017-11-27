@@ -36,7 +36,7 @@ void pop(){
 
     if (top1 == NULL)
     {
-        printf ("\n Error : Trying to pop from empty stack");
+        printf ("\n Error : Trying to pop from empty stack!\n");
         return;
     }
     else
@@ -51,13 +51,13 @@ void display () {
 
     if (top1 == NULL)
     {
-        printf ("Stack is empty");
+        printf ("Stack is empty!\n");
         return;
     }
 
     while (top1 != NULL)
     {
-        printf ("%d->", top1->info);
+        printf ("%d ", top1->info);
         top1 = top1->ptr;
     }
  }

@@ -195,7 +195,7 @@ int main () {
     matrix  = create_Matrix (edge);
     matrix1 = create_Matrix (edge);
     
-    find_way (matrix, edge);
+    find_way (matrix,matrix1, edge);
     
     free (matrix);
     free (matrix1);
